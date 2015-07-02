@@ -1,0 +1,36 @@
+{
+  "name": "test-react-ampersand",
+  "version": "1.0.0",
+  "description": "using react in ampersand views",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "prebuild": "rm -rf public && mkdir public",
+    "build": "NODE_ENV=production webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "surge -p public -d alexboots-react-ampersand.surge.sh"
+  },
+  "author": "alex hays <contact@alexhays.com>",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.2.2",
+    "css-loader": "^0.15.1",
+    "file-loader": "^0.8.4",
+    "hjs-webpack": "^2.9.0",
+    "json-loader": "^0.5.2",
+    "node-libs-browser": "^0.5.2",
+    "postcss-loader": "^0.5.1",
+    "react": "^0.13.3",
+    "react-hot-loader": "^1.2.7",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.2.1",
+    "surge": "^0.14.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1",
+    "yeticss": "^6.0.7"
+  }
+}
