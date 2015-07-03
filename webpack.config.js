@@ -4,5 +4,6 @@ var getConfig = require('hjs-webpack'); //returns complete webpack config with a
 module.exports = getConfig({
   in: 'src/app.js',
   out: 'public',
-  isDev: process.env.NODE_ENV !== 'production'
+  isDev: process.env.NODE_ENV !== 'production'//,
+  //hostname: 'ahays-0115.local'
 });
