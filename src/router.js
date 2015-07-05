@@ -10,8 +10,10 @@ export default Router.extend({
     'vulns': 'vulns'
   },
 
-  public () {
+  public () {    
     console.log('on public page');
+    //Since we're using app.extend you can trigger events / send data around your app 
+    app.trigger('hello', {'some': 'data'});
     React.render(<PublicPage />, document.body);
   },
 
