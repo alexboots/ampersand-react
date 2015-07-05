@@ -1,15 +1,18 @@
+import app from 'ampersand-app' // This is instead of doing window.app
+
 import React from 'react' //es6 imports - same as var React = require('react');
 import styles from './styles/main.less'
 import Router from './router'
 
-window.app = {
+app.extend({
   init () {
     this.router = new Router();
     this.router.history.start();
   }
-}
-window.app.init();
+});
 
+
+//window.app.init();
 // const Hello = React.createClass({ // Use const to indicate intent - should never be re-asigned 
 //   displayName: 'Hello',
 //   render () { //If using a function thats part of an object dont need to do function
