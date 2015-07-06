@@ -14,7 +14,7 @@ export default Router.extend({
   renderPage(page, opts = {layout: true}) { //set default options - this is an es6 thing - if no options are passed, layout true default happens    
     if(opts.layout){
       page = (
-        <Layout>
+        <Layout me={app.me}> 
           {page}
         </Layout>
       )
