@@ -87,4 +87,3 @@ export default Router.extend({
     window.location = '/' // force full page refresh to clear anything in memory 
   }
 });
-// this is if we're exporting a single thing
