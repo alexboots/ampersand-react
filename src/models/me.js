@@ -3,8 +3,9 @@
 // 'me' context is always the user actually sitting at the keyboard, using the app. 
 import Model from 'ampersand-model' //extends amperstand-state
 import RepoCollection from './repo-collection'
+import githubMixin from '../helpers/github-mixin'
 
-export default Model.extend({
+export default Model.extend(githubMixin, {
   url: 'https://api.github.com/user',
 
   // Note: the stuff we don't explicity define here will not get saved, even if the model contains it when .save() ing
@@ -25,7 +26,6 @@ export default Model.extend({
   initialize () {
     this.token = window.localStorage.token
     this.on('change', this.onChangeToken)
-    this.fetchInitialData()
   },
 
   onChangeToken () {
@@ -35,17 +35,6 @@ export default Model.extend({
   fetchInitialData () {
     if(this.token){
       this.fetch()
-    }
-  },
-
-  ajaxConfig () {
-    // http://ampersandjs.com/docs#ampersand-model-ajaxconfig
-    /* ampersand-sync will call ajaxConfig on your model before it makes the request 
-       to the server, and will merge in any options you return to the request. */
-    return {
-      headers: {
-        Authorization: 'token ' + this.token  // https://developer.github.com/v3/oauth/#web-application-flow
-      }
     }
   }
 

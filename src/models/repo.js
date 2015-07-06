@@ -5,13 +5,5 @@ export default Model.extend({
     id: 'number',
     name: 'string',
     fullName: 'string'
-  },
-
-  session: {
-
-  },
-
-  initialize: {
-    
   }
 })
