@@ -2,7 +2,7 @@
 // Use 'me' instead of user since 'user' because user is such an overloaded term, can be ambiguous 
 // 'me' context is always the user actually sitting at the keyboard, using the app. 
 import Model from 'ampersand-model' //extends amperstand-state
-
+import RepoCollection from './repo-collection'
 
 export default Model.extend({
   url: 'https://api.github.com/user',
@@ -16,6 +16,10 @@ export default Model.extend({
 
   session: { // any session properties - wont get includes in save calls, just for local session info
     token: 'string' // need to persist this 
+  },
+
+  collections: { // define child collections
+    repos: RepoCollection // app.me.repos = repo collection | dont have to call new on it because it does that when a new model is created
   },
 
   initialize () {
