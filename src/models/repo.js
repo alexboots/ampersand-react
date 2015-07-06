@@ -4,6 +4,6 @@ export default Model.extend({
   props: {
     id: 'number',
     name: 'string',
-    fullName: 'string'
+    full_name: 'string'
   }
 })

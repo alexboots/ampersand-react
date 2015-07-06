@@ -1,8 +1,25 @@
 import React from 'react'
+import ampersandReactMixin from 'ampersand-react-mixin'
 
 export default React.createClass({
+  mixins: [ampersandReactMixin],
   displayName: 'ReposPage',
   render() {
-    return <h5>sup repos</h5>
+    const {repos} = this.props
+
+    return (
+      <div>
+        asdf
+        {repos.map((repo) => {
+          return (
+            <div>
+            hi
+              {repo.id}
+              {repo.full_name}
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 });

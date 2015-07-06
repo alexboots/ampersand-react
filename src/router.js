@@ -39,7 +39,7 @@ export default Router.extend({
 
   repos () {
     console.log('on repos page');
-    this.renderPage(<ReposPage/>);
+    this.renderPage(<ReposPage repos={app.me.repos} />) // note: {} around param on the tag notes its a dynamic property
   },
 
   login () {
