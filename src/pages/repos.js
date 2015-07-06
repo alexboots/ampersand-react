@@ -12,10 +12,8 @@ export default React.createClass({
         asdf
         {repos.map((repo) => {
           return (
-            <div>
-            hi
-              {repo.id}
-              {repo.full_name}
+            <div key={repo.id}> {/* Adding this gets rid of this console warning: Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of ReposPage. See https://fb.me/react-warning-keys for more information. */}
+              <a href={repo.repo_url}>{repo.full_name}</a>
             </div>
           )
         })}
