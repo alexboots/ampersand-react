@@ -7,6 +7,7 @@ import xhr from 'xhr'
 
 import PublicPage from './pages/public'
 import ReposPage  from './pages/repos'
+import RepoDetailPage from './pages/repo-detail'
 import Layout from './layout'
 
 export default Router.extend({
@@ -27,6 +28,7 @@ export default Router.extend({
     'repos': 'repos',
     'login': 'login',
     'logout': 'logout',
+    'repo/:owner/:name': 'repoDetail',
     'auth/callback?:query': 'authCallback' // :query syntax passes whatever str is passed back to authCallback
   },
 
@@ -40,6 +42,11 @@ export default Router.extend({
   repos () {
     console.log('on repos page');
     this.renderPage(<ReposPage repos={app.me.repos} />) // note: {} around param on the tag notes its a dynamic property
+  },
+
+  repoDetail (owner, name) {
+    const repo = app.me.repos.getByFullName(owner + '/' + name)
+    this.renderPage(<RepoDetailPage repo={repo} />)
   },
 
   login () {
