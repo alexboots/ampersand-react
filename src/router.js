@@ -3,7 +3,7 @@ import React from 'react'
 import qs from 'qs'
 import Router from 'ampersand-router'
 import PublicPage from './pages/public'
-import VulnsPage  from './pages/vulns'
+import reposPage  from './pages/repos'
 import Layout from './layout'
 
 export default Router.extend({
@@ -21,7 +21,7 @@ export default Router.extend({
 
   routes: {
     '': 'public',
-    'vulns': 'vulns',
+    'repos': 'repos',
     'login': 'login',
     'logout': 'logout',
     'auth/callback?code=:code': 'authCallback' //this ?code:code syntax passes whatever :code is passed back to authCallback
@@ -34,8 +34,8 @@ export default Router.extend({
     this.renderPage(<PublicPage/>, {layout: true});
   },
 
-  vulns () {
-    console.log('on vulns page');
+  repos () {
+    console.log('on repos page');
     this.renderPage(<PublicPage/>);
   },
 

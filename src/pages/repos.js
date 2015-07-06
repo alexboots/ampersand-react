@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default React.createClass({
-  displayName: 'VulnsPage',
+  displayName: 'reposPage',
   render() {
-    return <h5>sup vulns</h5>
+    return <h5>sup repos</h5>
   }
 });
