@@ -1,7 +1,9 @@
 import app from 'ampersand-app'
+import Router from 'ampersand-router'
 import React from 'react'
 import qs from 'qs'
-import Router from 'ampersand-router'
+import uuid from 'node-uuid'
+
 import PublicPage from './pages/public'
 import reposPage  from './pages/repos'
 import Layout from './layout'
@@ -24,7 +26,7 @@ export default Router.extend({
     'repos': 'repos',
     'login': 'login',
     'logout': 'logout',
-    'auth/callback?code=:code': 'authCallback' //this ?code:code syntax passes whatever :code is passed back to authCallback
+    'auth/callback?:query': 'authCallback' // :query syntax passes whatever str is passed back to authCallback
   },
 
   public () {    
@@ -40,17 +42,27 @@ export default Router.extend({
   },
 
   login () {
+    const state = uuid() // lib that uses browsers cripto object to generate a unique identifier
+    window.localStorage.state = state
     // Lets use qs module to build query strings instead of doing '?client_id=' + someID + '&moreStuff' +  ::and so on
+    // has stringify and parse method just like json
     window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
       client_id: '6cc6877e2fb34e439f4d', // From github app
       redirect_uri: window.location.origin + '/auth/callback',
-      scope: 'user, repo' // this is defining whats accessible (like in facbeook where its all 'this app has access to email, wall posts' etc)
+      scope: 'user, repo', // this is defining whats accessible (like in facbeook where its all 'this app has access to email, wall posts' etc)
+      state: state
+      // Generate random string to pass to api - api then sends string back w the same string. 
+      // This is a way to nobody messed with your request 
     })
 
   },
 
-  authCallback (code) {
-    console.log(code)
+  authCallback (query) {
+    query = qs.parse(query)
+    if(query.state === window.localStorage.state) {
+      console.log('authed', query.code)
+      delete window.localStorage.state
+    }    
   },
  
   logout () {

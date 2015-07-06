@@ -27,6 +27,7 @@
     "less-loader": "^2.2.0",
     "local-links": "^1.4.0",
     "node-libs-browser": "^0.5.2",
+    "node-uuid": "^1.4.3",
     "postcss-loader": "^0.5.1",
     "qs": "^4.0.0",
     "react": "^0.13.3",
