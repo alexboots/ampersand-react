@@ -14,7 +14,7 @@ export default React.createClass({
                             // its nice because you can do {me, user, id} and all those vars get set if they exist on the object
 
     return (
-      <NavHelper>        
+      <NavHelper className="nav-helper">        
         <nav>
           <a href='/'>Home</a> | 
           <a href='/repos'> repos</a> | 

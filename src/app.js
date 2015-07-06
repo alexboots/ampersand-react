@@ -8,7 +8,7 @@ import Me from './models/me'
 
 console.log('ME', Me)
 
-//expose to console for debugging
+//expose to console for debugging ONLY
 window.app = app;
 
 app.extend({
