@@ -6,8 +6,6 @@ import styles from './styles/main.less'
 import Router from './router'
 import Me from './models/me'
 
-console.log('ME', Me)
-
 //expose to console for debugging ONLY
 window.app = app;
 
@@ -25,22 +23,3 @@ app.on('hello', (data) => {
 });
 
 app.init();
-
-// const Hello = React.createClass({ // Use const to indicate intent - should never be re-asigned 
-//   displayName: 'Hello',
-//   render () { //If using a function thats part of an object dont need to do function
-//     return <div>hey, {this.props.name}</div>
-//   }
-// });
-
-// amperstand react mixin:
-
-
-// var Hello = React.createClass({
-//   displayName: 'hello',
-//   render: function() {
-//     return <div>hey, {this.props.name}</div>
-//   }
-// });
-
-// React.render(<Hello name="world" />, document.body);
