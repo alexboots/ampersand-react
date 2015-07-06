@@ -9,7 +9,8 @@ export default React.createClass({
       <NavHelper>
         <nav>
           <a href='/'>Home</a> | 
-          <a href='/repos'> repos</a>
+          <a href='/repos'> repos</a> | 
+          <a href='/logout'> Logout </a>
         </nav>
 
         <div className='container'>

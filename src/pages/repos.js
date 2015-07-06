@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default React.createClass({
-  displayName: 'reposPage',
+  displayName: 'ReposPage',
   render() {
     return <h5>sup repos</h5>
   }

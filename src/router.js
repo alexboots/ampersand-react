@@ -3,9 +3,10 @@ import Router from 'ampersand-router'
 import React from 'react'
 import qs from 'qs'
 import uuid from 'node-uuid'
+import xhr from 'xhr'
 
 import PublicPage from './pages/public'
-import reposPage  from './pages/repos'
+import ReposPage  from './pages/repos'
 import Layout from './layout'
 
 export default Router.extend({
@@ -38,7 +39,7 @@ export default Router.extend({
 
   repos () {
     console.log('on repos page');
-    this.renderPage(<PublicPage/>);
+    this.renderPage(<ReposPage/>);
   },
 
   login () {
@@ -62,11 +63,28 @@ export default Router.extend({
     if(query.state === window.localStorage.state) {
       console.log('authed', query.code)
       delete window.localStorage.state
+      xhr({ //just a ajax api, could use jquery, idk
+        url: 'https://alexboots-ampersand-react-base.herokuapp.com/authenticate/' + query.code,
+        json: true, //will parse response
+      }, 
+        (error, resp, body) => {
+          if(error){
+            console.error('An error has occured')
+          } else {
+            this.redirectTo('/repos')
+            app.me.token = body.token // session var for me model
+          }
+          console.log('error', error)
+          console.log('resp', resp)
+          console.log('body', body.token)
+          console.log('token', body.token)
+      }); 
     }    
   },
  
   logout () {
-    
+    window.localStorage.clear() // could also inform user they're logging out of this app, not github as a whole. idk
+    window.location = '/' // force full page refresh to clear anything in memory 
   }
 });
 // this is if we're exporting a single thing
